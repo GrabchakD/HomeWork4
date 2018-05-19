@@ -17,6 +17,8 @@
         /home/./a/../b --> /home/b
 */
 
+package HomeWork3WithTest;
+
 public class Task2 {
     public static void main(String[] args) {
         String input = "/home/dgrabchak";
@@ -26,6 +28,8 @@ public class Task2 {
     private static void simplifiedInput(String input) {
         char[] arr = input.toCharArray();
         StringBuilder simplArr = new StringBuilder();
+        String[] result = new String[arr.length];
+        int position = 0;
 
 
         for (int i = 0; i < arr.length; i++) {
@@ -38,6 +42,8 @@ public class Task2 {
                 } else if (simplArr.equals("//")) {
                     simplArr.delete(arr.length - 1, arr.length);
                 } else if (simplArr.equals("/../")) {
+
+                } else {
 
                 }
             }
