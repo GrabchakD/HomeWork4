@@ -17,7 +17,7 @@ public class Task2Test {
 
     @Test
     public void testInputHappyPath() {
-        char[] expectedResult = {'a', 'b', 'e', 'd', 'c', 'f', 'g'};                    //not correct work
+        char[] expectedResult = {'a', 'b', 'e', 'd', 'c', 'f', 'g'};
 
         int indexStart = 2;
         int indexEnd = 4;

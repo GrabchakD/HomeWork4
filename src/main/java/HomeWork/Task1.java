@@ -27,9 +27,13 @@ import java.util.Scanner;
 public class Task1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int length = sc.nextInt();
-        int k = sc.nextInt();
-        int arr[] = new int[length];
+        int length = 5;
+        int k = 2;
+        int arr[] = {5, 6, 1, 2, 6};
+
+       /* for (int i = 0; i < arr.length; i++) {
+            arr[i] = sc.nextInt();
+        }*/
 
         System.out.println(rotateArr(arr, k));
 
@@ -42,23 +46,18 @@ public class Task1 {
         int[] temp = new int[k];
         int i = 0;
         int empty;
+        int count = k;
 
-        while (k != arr.length) {
-            temp[i] = arr[k];
-            k++;
+        while (i != k) {
+            temp[i] = arr[i];
             i++;
         }
 
-        for (int j = 0; k != arr.length - 1; j++) {
+        for (int j = 0; count != arr.length; j++) {
             empty = arr[j];
             arr[j] = arr[j + 1];
             arr[j + 1] = empty;
-            k++;
-        }
-
-        for (int j = 0; k != arr.length; j++) {
-            arr[k] = temp[i];
-            k++;
+            count++;
         }
 
         return arr;

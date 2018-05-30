@@ -6,8 +6,11 @@ import static org.junit.Assert.*;
 
 public class Task1Test {
 
-    @Test
-    public void test() {
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testKeyLongerThanArrLength() {
+        int k = 100;
+        int[] arr = new int[7];
 
+        Task1.rotateArr(arr, k);
     }
 }

@@ -19,35 +19,48 @@
 
 package HomeWork3WithTest;
 
+import java.util.Stack;
+
 public class Task2 {
     public static void main(String[] args) {
-        String input = "/home/dgrabchak";
-        simplifiedInput(input);
+        String input = "/home/a/../dgrabchak";
+        String[] result = simplifiedInput(input).toArray(new String[0]);
+
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i]);
+        }
     }
 
-    private static void simplifiedInput(String input) {
+    public static Stack<String> simplifiedInput(String input) {
         char[] arr = input.toCharArray();
         StringBuilder simplArr = new StringBuilder();
-        String[] result = new String[arr.length];
-        int position = 0;
+        Stack<String> stack = new Stack<>();
 
 
         for (int i = 0; i < arr.length; i++) {
             simplArr.append(arr[i]);
 
             if (arr[i] == '/') {
-                simplArr.append(arr[i]);
-                if (simplArr.equals("/./" )) {
-                    simplArr.delete(arr.length - 2, arr.length);
-                } else if (simplArr.equals("//")) {
-                    simplArr.delete(arr.length - 1, arr.length);
-                } else if (simplArr.equals("/../")) {
-
+                if (simplArr.toString().equals("/./")) {
+                    simplArr.delete(0, simplArr.length());
+                } else if (simplArr.toString().equals("//")) {
+                    simplArr.delete(0, simplArr.length() - 1);
+                } else if (simplArr.toString().equals("/../")) {
+                    simplArr.delete(0, simplArr.length() - 1);
+                    stack.pop();
                 } else {
-
+                    stack.push(String.valueOf(simplArr));
+                    if (simplArr.length() == 1) {
+                        continue;
+                    } else {
+                        simplArr.delete(0, simplArr.length() - 1);
+                    }
                 }
             }
         }
 
+        stack.push(String.valueOf(simplArr));
+
+        return stack;
     }
 }
